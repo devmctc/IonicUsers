@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
+
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,8 @@ export class LoginPage implements OnInit {
   errorMessage: string;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -25,7 +28,7 @@ export class LoginPage implements OnInit {
     }
 
     if(response.success===true){
-      window.location.href='/#/users';
+      this.router.navigate(['/users']);
     }
 
   }
